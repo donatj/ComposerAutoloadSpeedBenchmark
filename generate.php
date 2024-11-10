@@ -15,9 +15,12 @@ $classnames = generateRandomClasses(10000);
 
 $head = <<<'PHP'
 <?php
-$start = microtime(true);
+
+$beforeLoad = microtime(true);
 
 require __DIR__ . '/vendor/autoload.php';
+
+$afterLoad = microtime(true);
 
 PHP;
 
@@ -39,5 +42,13 @@ foreach( $classnames as $fqcn ) {
 	saveClassFile($data, $classMapFile, $srcClassmap);
 }
 
-file_put_contents($benchmarkClassmap, 'echo "Classmap Time: " . (microtime(true) - $start) . PHP_EOL;' . PHP_EOL, FILE_APPEND);
-file_put_contents($benchmarkPsr4, 'echo "PSR-4 Time:    " . (microtime(true) - $start) . PHP_EOL;' . PHP_EOL, FILE_APPEND);
+
+
+file_put_contents($benchmarkClassmap, <<<'PHP'
+printf("Classmap\n\ttotal: %.8f exec: %.8f\n", microtime(true) - $beforeLoad, microtime(true) - $afterLoad);
+PHP
+ . PHP_EOL, FILE_APPEND);
+file_put_contents($benchmarkPsr4, <<<'PHP'
+printf("PSR-4\n\ttotal: %.8f exec: %.8f\n", microtime(true) - $beforeLoad, microtime(true) - $afterLoad);
+PHP
+ . PHP_EOL, FILE_APPEND);
