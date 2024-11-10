@@ -29,4 +29,9 @@ jobs:
         run: make benchmark
 
       - name: Note Results
-        run: cat benchmark.log >> $GITHUB_STEP_SUMMARY
+        run: |
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            type benchmark.log >> $GITHUB_STEP_SUMMARY
+          else
+            cat benchmark.log >> $GITHUB_STEP_SUMMARY
+          fi
