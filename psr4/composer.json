@@ -1,0 +1,8 @@
+{
+    "name": "donatj/composer-autoload-speed-benchmark-psr4",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}

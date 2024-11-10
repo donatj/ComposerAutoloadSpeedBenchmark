@@ -1,0 +1,5 @@
+# ComposerAutoloadSpeedBenchmark
+
+```bash
+$ make benchmark
+```
