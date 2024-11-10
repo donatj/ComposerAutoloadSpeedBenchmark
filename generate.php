@@ -45,10 +45,10 @@ foreach( $classnames as $fqcn ) {
 
 
 file_put_contents($benchmarkClassmap, <<<'PHP'
-printf("Classmap\n\ttotal: %.8f exec: %.8f\n", microtime(true) - $beforeLoad, microtime(true) - $afterLoad);
+printf("Classmap - total: %.8f exec: %.8f\n", microtime(true) - $beforeLoad, microtime(true) - $afterLoad);
 PHP
  . PHP_EOL, FILE_APPEND);
 file_put_contents($benchmarkPsr4, <<<'PHP'
-printf("PSR-4\n\ttotal: %.8f exec: %.8f\n", microtime(true) - $beforeLoad, microtime(true) - $afterLoad);
+printf("PSR-4    - total: %.8f exec: %.8f\n", microtime(true) - $beforeLoad, microtime(true) - $afterLoad);
 PHP
  . PHP_EOL, FILE_APPEND);
