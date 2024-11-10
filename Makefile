@@ -30,4 +30,3 @@ benchmark: generate
 	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php     | tee -a benchmark.log
 
 	cat benchmark.log
-

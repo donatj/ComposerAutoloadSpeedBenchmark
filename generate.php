@@ -40,4 +40,4 @@ foreach( $classnames as $fqcn ) {
 }
 
 file_put_contents($benchmarkClassmap, 'echo "Classmap Time: " . (microtime(true) - $start) . PHP_EOL;' . PHP_EOL, FILE_APPEND);
-file_put_contents($benchmarkPsr4, 'echo "Psr4 Time:     " . (microtime(true) - $start) . PHP_EOL;' . PHP_EOL, FILE_APPEND);
+file_put_contents($benchmarkPsr4, 'echo "PSR-4 Time:    " . (microtime(true) - $start) . PHP_EOL;' . PHP_EOL, FILE_APPEND);
