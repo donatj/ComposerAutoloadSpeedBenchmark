@@ -16,11 +16,18 @@ generate: clean
 @PHONY: benchmark
 benchmark: generate
 	-rm -rf benchmark.log
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php | tee -a benchmark.log
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php     | tee -a benchmark.log
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php | tee -a benchmark.log
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php     | tee -a benchmark.log
+
+	echo "## Run 1" | tee -a benchmark.log
 	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php | tee -a benchmark.log
 	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php     | tee -a benchmark.log
 
+	echo "\n## Run 2" | tee -a benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php | tee -a benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php     | tee -a benchmark.log
+
+	echo "\n## Run 3" | tee -a benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php | tee -a benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php     | tee -a benchmark.log
+
+	cat benchmark.log
 
