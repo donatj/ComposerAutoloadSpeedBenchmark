@@ -15,9 +15,12 @@ generate: clean
 
 @PHONY: benchmark
 benchmark: generate
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php
-	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php
+	-rm -rf benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php | tee -a benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php     | tee -a benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php | tee -a benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php     | tee -a benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 classmap/benchmark.php | tee -a benchmark.log
+	php -d zend.assertions=1 -d assert.active=1 -d opcache.enable=0 psr4/benchmark.php     | tee -a benchmark.log
+
+
